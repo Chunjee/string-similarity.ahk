@@ -1,0 +1,18 @@
+{
+    "name": "string-similarity.ahk",
+    "version": "1.0.0",
+    "description": "Finds degree of similarity between two strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
+    "main": "export.ahk",
+    "scripts": {
+        "newinstall": "yarn install --modules-folder ./lib"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Chunjee/string-similarity.ahk"
+    },
+    "dependencies": {
+        "log": "chunjee/array-sort.ahk"
+     },
+    "author": "uncredited",
+    "license": "MIT"
+}
