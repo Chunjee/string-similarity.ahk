@@ -22,7 +22,7 @@ testVar := stringSimilarity.findBestMatch("similar", ["levenshtein","matching","
 assert.test(testVar.bestMatch.target,"similarity")
 assert.test(testVar.bestMatch.rating,"0.80")
 testVar := stringSimilarity.findBestMatch("Hard to", [" hard to    ","hard to","Hard 2"])
-assert.test(testVar.bestMatch.target,"hard to22")
+assert.test(testVar.bestMatch.target,"hard to")
 assert.test(testVar.bestMatch.rating,"1")
 
 assert.fullreport()
