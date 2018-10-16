@@ -24,11 +24,7 @@ In your code:
 
 ```autohotkey
 #Include %A_ScriptDir%\lib\stringsimilarity.ahk\export.ahk
-```
 
-In your code:
-
-```autohotkey
 stringSimilarity := new stringsimilarity()
 
 similarityrating := stringSimilarity.compareTwoStrings("healed", "sealed")
