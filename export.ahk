@@ -1,5 +1,4 @@
 Class stringsimilarity {
-	#Include ../../lib/sort_arrays/export.ahk
 
 	__New() {
         this.info_Array
@@ -37,7 +36,7 @@ Class stringsimilarity {
         }
 
         ;sort the scored array and return the bestmatch
-        sortedArray := Fn_Sort2DArrayFast(this.info_Array,"rating", false) ;false reverses the order so the highest scoring is at the top
+        sortedArray := this.internal_Sort2DArrayFast(this.info_Array,"rating", false) ;false reverses the order so the highest scoring is at the top
         oObject := {bestMatch:sortedArray[1], ratings:sortedArray}
         return oObject
     }
@@ -50,5 +49,25 @@ Class stringsimilarity {
 
         l_array := this.findBestMatch(para_string,para_array)
         return l_array.bestMatch.target
+    }
+
+
+
+
+    internal_Sort2DArrayFast(byRef a, key, Ascending := True)
+    {
+        for index, obj in a
+            out .= obj[key] "+" index "|" ; "+" allows for sort to work with just the value
+        ; out will look like:   value+index|value+index|
+
+        v := a[a.minIndex(), key]
+        if v is number 
+            type := " N "
+        StringTrimRight, out, out, 1 ; remove trailing | 
+        Sort, out, % "D| " type  (!Ascending ? " R" : " ")
+        aStorage := []
+        loop, parse, out, |
+            aStorage.insert(a[SubStr(A_LoopField, InStr(A_LoopField, "+") + 1)])
+        return aStorage
     }
 }
