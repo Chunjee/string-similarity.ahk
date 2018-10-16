@@ -1,7 +1,7 @@
 string-similarity
 =================
 
-Finds degree of similarity between two strings, based on [Dice's Coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient), which is mostly better than [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance).
+Finds degree of similarity between two strings, based on [Dice's Coefficient](http:;;en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient), which is mostly better than [Levenshtein distance](http:;;en.wikipedia.org/wiki/Levenshtein_distance).
 
 
 ## Usage
@@ -28,13 +28,16 @@ In your code:
 
 In your code:
 
-```javascript
+```autohotkey
 stringSimilarity := new stringsimilarity()
 
-similarity = stringSimilarity.compareTwoStrings("healed", "sealed")
+similarityrating := stringSimilarity.compareTwoStrings("healed", "sealed")
 
-matches = stringSimilarity.findBestMatch("healed", ["edward", "sealed", "theatre"])
+matches := stringSimilarity.findBestMatch("healed", ["edward", "sealed", "theatre"])
+
+bestmatchstring := stringSimilarity.findBestMatch("Hard to", [" hard to    ", "hard to", "Hard 2"])
 ```
+
 ## API
 
 Requiring the module gives an object with two methods:
@@ -56,21 +59,21 @@ Order does not make a difference.
 
 ##### Examples
   
-```javascript
+```autohotkey
 stringSimilarity.compareTwoStrings("healed", "sealed");
-// → 0.80
+;; → 0.80
 
 stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition.", 
   "For sale: table in very good  condition, olive green in colour.");
-// → 0.71
+;; → 0.71
 
 stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition.", 
   "For sale: green Subaru Impreza, 210,000 miles");
-// → 0.30
+;; → 0.30
 
 stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition.", 
   "Wanted: mountain bike with at least 21 gears.");
-// → 0.11
+;; → 0.11
 ```
 
 ### findBestMatch(mainString, targetStrings)
@@ -92,7 +95,7 @@ stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good co
   "For sale: table in very good condition, olive green in colour.", 
   "Wanted: mountain bike with at least 21 gears."
 ]);
-// → 
+;; → 
 { ratings:
    [ { target: "For sale: green Subaru Impreza, 210,000 miles",
        rating: 0.30 },
@@ -125,6 +128,5 @@ stringSimilarity.findBestMatch("Hard to", [
     ,"hard to"
     ,"Hard 2"
 ])
-// → 
-"hard to"
+;; → "hard to"
 ```
