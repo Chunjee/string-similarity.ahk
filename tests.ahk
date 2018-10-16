@@ -1,6 +1,5 @@
 #Include export.ahk
 #Include ..\unit-testing.ahk\export.ahk
-#Include ..\sort-array.ahk\export.ahk
 #NoTrayIcon
 
 SetBatchLines, -1
