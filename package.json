@@ -11,7 +11,7 @@
         "url": "https://github.com/Chunjee/string-similarity.ahk"
     },
     "dependencies": {
-        "log": "chunjee/array-sort.ahk"
+        "log": "chunjee/sort-array.ahk"
      },
     "author": "uncredited",
     "license": "MIT"
