@@ -1,6 +1,6 @@
 {
     "name": "string-similarity.ahk",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Finds degree of similarity between two strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
     "main": "export.ahk",
     "scripts": {
@@ -10,9 +10,7 @@
         "type": "git",
         "url": "https://github.com/Chunjee/string-similarity.ahk"
     },
-    "dependencies": {
-        "sort-array.ahk": "chunjee/sort-array.ahk"
-     },
-    "author": "uncredited",
+    "dependencies": { },
+    "author": "Shawn Brooker",
     "license": "MIT"
 }

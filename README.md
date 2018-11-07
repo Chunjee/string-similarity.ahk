@@ -56,19 +56,19 @@ Order does not make a difference.
 ##### Examples
   
 ```autohotkey
-stringSimilarity.compareTwoStrings("healed", "sealed");
+stringSimilarity.compareTwoStrings("healed", "sealed")
 ;; → 0.80
 
-stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition.", 
-  "For sale: table in very good  condition, olive green in colour.");
+stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition."
+  , "For sale: table in very good  condition, olive green in colour.")
 ;; → 0.71
 
-stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition.", 
-  "For sale: green Subaru Impreza, 210,000 miles");
+stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition."
+  , "For sale: green Subaru Impreza, 210,000 miles")
 ;; → 0.30
 
-stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition.", 
-  "Wanted: mountain bike with at least 21 gears.");
+stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition."
+  , "Wanted: mountain bike with at least 21 gears.");
 ;; → 0.11
 ```
 
@@ -86,11 +86,10 @@ Compares `mainString` against each string in `targetStrings`.
 
 ##### Examples
 ```autohotkey
-stringSimilarity.findBestMatch('Olive-green table for sale, in extremely good condition.", [
-  "For sale: green Subaru Impreza, 210,000 miles", 
-  "For sale: table in very good condition, olive green in colour.", 
-  "Wanted: mountain bike with at least 21 gears."
-]);
+stringSimilarity.findBestMatch("Olive-green table for sale, in extremely good condition."
+  , ["For sale: green Subaru Impreza, 210,000 miles"
+  , "For sale: table in very good condition, olive green in colour."
+  , "Wanted: mountain bike with at least 21 gears."])
 ;; → 
 { ratings:
    [ { target: "For sale: green Subaru Impreza, 210,000 miles",
@@ -119,10 +118,9 @@ Compares `mainString` against each string in `targetStrings`.
 
 ##### Examples
 ```autohotkey
-stringSimilarity.findBestMatch("Hard to", [
-    " hard to    "
-    ,"hard to"
-    ,"Hard 2"
-])
+stringSimilarity.findBestMatch("Hard to"
+  , [" hard to    "
+  , "hard to"
+  , "Hard 2"])
 ;; → "hard to"
 ```
