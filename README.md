@@ -24,14 +24,13 @@ In your code:
 
 ```autohotkey
 #Include %A_ScriptDir%\lib\stringsimilarity.ahk\export.ahk
-
 stringSimilarity := new stringsimilarity()
 
 similarityrating := stringSimilarity.compareTwoStrings("healed", "sealed")
 
 matches := stringSimilarity.findBestMatch("healed", ["edward", "sealed", "theatre"])
 
-bestmatchstring := stringSimilarity.findBestMatch("Hard to", [" hard to    ", "hard to", "Hard 2"])
+bestmatchstring := stringSimilarity.simpleBestMatch("Hard to", [" hard to    ", "hard to", "Hard 2"])
 ```
 
 ## API
