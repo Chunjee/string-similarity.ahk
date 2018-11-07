@@ -113,7 +113,7 @@ Compares `mainString` against each string in `targetStrings`.
 2. targetStrings (Array): Each string in this array will be matched against the main string.
 
 ##### Returns
-(String): The string that was most similar to the main string.
+(String): The string that was most similar to the first argument string.
 
 ##### Examples
 ```autohotkey

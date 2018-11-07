@@ -36,9 +36,9 @@ Class stringsimilarity {
         }
 
         ;sort the scored array and return the bestmatch
-        sortedArray := this.internal_Sort2DArrayFast(this.info_Array,"rating", false) ;false reverses the order so the highest scoring is at the top
-        oObject := {bestMatch:sortedArray[1], ratings:sortedArray}
-        return oObject
+        l_sortedArray := this.internal_Sort2DArrayFast(this.info_Array,"rating", false) ;false reverses the order so the highest scoring is at the top
+        l_Object := {bestMatch:l_sortedArray[1], ratings:l_sortedArray}
+        return l_Object
     }
 
 
@@ -65,9 +65,9 @@ Class stringsimilarity {
             type := " N "
         StringTrimRight, out, out, 1 ; remove trailing | 
         Sort, out, % "D| " type  (!Ascending ? " R" : " ")
-        aStorage := []
+        l_storage := []
         loop, parse, out, |
-            aStorage.insert(a[SubStr(A_LoopField, InStr(A_LoopField, "+") + 1)])
-        return aStorage
+            l_storage.insert(a[SubStr(A_LoopField, InStr(A_LoopField, "+") + 1)])
+        return l_storage
     }
 }
