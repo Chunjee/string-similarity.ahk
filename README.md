@@ -35,7 +35,8 @@ bestmatchstring := stringSimilarity.simpleBestMatch("Hard to", [" hard to    ", 
 
 ## API
 
-Requiring the module gives an object with two methods:
+Requiring the module gives an object with three methods: .compareTwoStrings, .findBestMatch, and .simpleBestMatch
+
 
 ### compareTwoStrings(string1, string2)
 
@@ -67,7 +68,7 @@ stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely goo
 ;; → 0.30
 
 stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition."
-  , "Wanted: mountain bike with at least 21 gears.");
+  , "Wanted: mountain bike with at least 21 gears.")
 ;; → 0.11
 ```
 
