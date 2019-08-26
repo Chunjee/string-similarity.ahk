@@ -118,7 +118,7 @@ Compares `mainString` against each string in `targetStrings`.
 
 ##### Examples
 ```autohotkey
-stringSimilarity.findBestMatch("Hard to"
+stringSimilarity.simpleBestMatch("Hard to"
   , [" hard to    "
   , "hard to"
   , "Hard 2"])
