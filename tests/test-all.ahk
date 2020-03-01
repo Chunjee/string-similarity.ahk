@@ -1,4 +1,4 @@
-#Include export.ahk
+#Include ..\export.ahk
 #Include ..\node_modules\unit-testing.ahk\export.ahk
 #NoTrayIcon
 
