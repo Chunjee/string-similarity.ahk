@@ -1,14 +1,18 @@
 #Include ..\export.ahk
-#Include ..\node_modules\unit-testing.ahk\export.ahk
-#NoTrayIcon
+#Include ..\node_modules
+#Include unit-testing.ahk\export.ahk
+#Include json.ahk\export.ahk
 
+#NoEnv
+#NoTrayIcon
+#SingleInstance force
 SetBatchLines, -1
 
 stringSimilarity := new stringsimilarity()
+assert := new unittesting()
 
 
 ;; Test compareTwoStrings()
-assert := new unittest_class()
 assert.test((stringSimilarity.compareTwoStrings("The eturn of the king", "The Return of the King") > 0.90 ),true)
 assert.test((stringSimilarity.compareTwoStrings("The Mask", "the mask") = 1 ),true)
 assert.test((stringSimilarity.compareTwoStrings("set", "ste") = 0 ),true)

@@ -10,7 +10,9 @@
         "type": "git",
         "url": "https://github.com/Chunjee/string-similarity.ahk"
     },
-    "dependencies": { },
+    "devdependencies": {
+        "unit-testing.ahk": "^0.4.1"
+    },
     "author": "Shawn Brooker",
     "license": "MIT"
 }
