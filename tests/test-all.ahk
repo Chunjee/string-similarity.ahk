@@ -1,5 +1,5 @@
 #Include export.ahk
-#Include ..\unit-testing.ahk\export.ahk
+#Include ..\node_modules\unit-testing.ahk\export.ahk
 #NoTrayIcon
 
 SetBatchLines, -1
