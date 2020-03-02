@@ -14,5 +14,14 @@
         "unit-testing.ahk": "^0.4.1"
     },
     "author": "Shawn Brooker",
+    "contributors": [
+        {
+            "name": "Shawn Brooker",
+            "url": "https://github.com/chunjee"
+        },
+        {
+            "name": "jeeswg"
+        }
+    ],
     "license": "MIT"
 }
