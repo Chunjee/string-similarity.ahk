@@ -4,38 +4,28 @@ string-similarity.ahk
 Finds degree of similarity between two strings, based on [Dice's Coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient), which is mostly better than [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance).
 
 
-## Usage
-Install by defining the package in package.json:
+## Installation
 
-
-```javascript
-"dependencies": {
-        "string-similarity.ahk": "chunjee/string-similarity.ahk"
-     }
-```
-
-then install with yarn:
-
-```shell
-yarn newinstall
+In a terminal or command line:
+```bash
+npm install string-similarity.ahk
 ```
 
 In your code:
-
 ```autohotkey
-#Include %A_ScriptDir%\lib\stringsimilarity.ahk\export.ahk
-stringSimilarity := new stringsimilarity()
+#Include %A_ScriptDir%\node_modules
+#Include string-similarity.ahk\export.ahk
+oStringSimilarity := new stringsimilarity()
 
-similarityrating := stringSimilarity.compareTwoStrings("healed", "sealed")
-
-matches := stringSimilarity.findBestMatch("healed", ["edward", "sealed", "theatre"])
-
-bestmatchstring := stringSimilarity.simpleBestMatch("Hard to", [" hard to    ", "hard to", "Hard 2"])
+oStringSimilarity.compareTwoStrings("test", "testing")
+; => 0.67
+oStringSimilarity.compareTwoStrings("Hello", "hello")
+; => 1.0
 ```
 
 ## API
 
-Requiring the module gives an object with three methods: .compareTwoStrings, .findBestMatch, and .simpleBestMatch
+Including the module gives an object with three methods: .compareTwoStrings, .findBestMatch, and .simpleBestMatch
 
 
 ### compareTwoStrings(string1, string2)
@@ -57,19 +47,19 @@ Order does not make a difference.
   
 ```autohotkey
 stringSimilarity.compareTwoStrings("healed", "sealed")
-;; → 0.80
+; → 0.80
 
 stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition."
   , "For sale: table in very good  condition, olive green in colour.")
-;; → 0.71
+; → 0.71
 
 stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition."
   , "For sale: green Subaru Impreza, 210,000 miles")
-;; → 0.30
+; → 0.30
 
 stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely good condition."
   , "Wanted: mountain bike with at least 21 gears.")
-;; → 0.11
+; → 0.11
 ```
 
 ### findBestMatch(mainString, targetStrings)
@@ -90,7 +80,7 @@ stringSimilarity.findBestMatch("Olive-green table for sale, in extremely good co
   , ["For sale: green Subaru Impreza, 210,000 miles"
   , "For sale: table in very good condition, olive green in colour."
   , "Wanted: mountain bike with at least 21 gears."])
-;; → 
+; →
 { ratings:
    [ { target: "For sale: green Subaru Impreza, 210,000 miles",
        rating: 0.30 },
@@ -122,5 +112,5 @@ stringSimilarity.simpleBestMatch("Hard to"
   , [" hard to    "
   , "hard to"
   , "Hard 2"])
-;; → "hard to"
+; → "hard to"
 ```
