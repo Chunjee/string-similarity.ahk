@@ -11,7 +11,7 @@
         "url": "https://github.com/Chunjee/string-similarity.ahk"
     },
     "devdependencies": {
-        "unit-testing.ahk": "^0.4.1"
+        "unit-testing.ahk": "^0.5.0"
     },
     "author": "Shawn Brooker",
     "contributors": [
