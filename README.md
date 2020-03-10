@@ -5,7 +5,6 @@ Finds degree of similarity between two strings, based on [Dice's Coefficient](ht
 
 
 ## Installation
-
 In a terminal or command line:
 ```bash
 npm install string-similarity.ahk
@@ -24,27 +23,22 @@ oStringSimilarity.compareTwoStrings("Hello", "hello")
 ```
 
 ## API
-
 Including the module gives an object with three methods: .compareTwoStrings, .findBestMatch, and .simpleBestMatch
 
 
 ### compareTwoStrings(string1, string2)
-
 Returns a fraction between 0 and 1, which indicates the degree of similarity between the two strings. 0 indicates completely different strings, 1 indicates identical strings. The comparison is case-insensitive.
 
 ##### Arguments
-  
 1. string1 (string): The first string
 2. string2 (string): The second string
   
 Order does not make a difference.
   
 ##### Returns
-  
 (Number): A fraction from 0 to 1, both inclusive. Higher number indicates more similarity.
 
 ##### Examples
-  
 ```autohotkey
 stringSimilarity.compareTwoStrings("healed", "sealed")
 ; → 0.80
@@ -63,11 +57,9 @@ stringSimilarity.compareTwoStrings("Olive-green table for sale, in extremely goo
 ```
 
 ### findBestMatch(mainString, targetStrings)
-
 Compares `mainString` against each string in `targetStrings`.
 
 ##### Arguments
-
 1. mainString (string): The string to match each target string against.
 2. targetStrings (Array): Each string in this array will be matched against the main string.
 
@@ -95,11 +87,9 @@ stringSimilarity.findBestMatch("Olive-green table for sale, in extremely good co
 
 
 ### simpleBestMatch(mainString, targetStrings)
-
 Compares `mainString` against each string in `targetStrings`.
 
 ##### Arguments
-
 1. mainString (string): The string to match each target string against.
 2. targetStrings (Array): Each string in this array will be matched against the main string.
 
