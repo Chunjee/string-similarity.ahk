@@ -12,10 +12,10 @@ assert := new unittesting()
 ;; Test compareTwoStrings()
 assert.label("compareTwoStrings - check functional")
 assert.test((stringSimilarity.compareTwoStrings("The eturn of the king", "The Return of the King") > 0.90 ), true)
-assert.test((stringSimilarity.compareTwoStrings("The Mask", "the mask") = 1 ), true)
 assert.test((stringSimilarity.compareTwoStrings("set", "ste") = 0 ), true)
 
 assert.label("compareTwoStrings - Check if case matters")
+assert.test((stringSimilarity.compareTwoStrings("The Mask", "the mask") = 1 ), true)
 assert.test(stringSimilarity.compareTwoStrings("thereturnoftheking", "TheReturnoftheKing"), 1)
 StringCaseSense, On
 assert.test(stringSimilarity.compareTwoStrings("thereturnoftheking", "TheReturnoftheKing"), 1)
@@ -23,7 +23,7 @@ StringCaseSense, Off
 
 
 ;; Test simpleBestMatch()
-assert.label("compareTwoStrings - check functional")
+assert.label("simpleBestMatch - check functional")
 assert.test(stringSimilarity.simpleBestMatch("setting", ["ste","one","set"]), "set")
 assert.test(stringSimilarity.simpleBestMatch("Smart", ["smarts","farts","clip-art"]), "smarts")
 assert.test(stringSimilarity.simpleBestMatch("Olive-green table", ["green Subaru Impreza","table in very good","mountain bike with"]), "table in very good")
