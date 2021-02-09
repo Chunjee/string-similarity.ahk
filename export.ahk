@@ -5,7 +5,7 @@ Class stringsimilarity {
 	}
 
 
-	compareTwoStrings(para_string1,para_string2) {
+	compareTwoStrings(param_string1, param_string2) {
 		;Sørensen-Dice coefficient
 		savedBatchLines := A_BatchLines
 		SetBatchLines, -1
@@ -13,11 +13,11 @@ Class stringsimilarity {
 		vCount := 0
 		oArray := {}
 		oArray := {base:{__Get:Func("Abs").Bind(0)}} ;make default key value 0 instead of a blank string
-		Loop, % vCount1 := StrLen(para_string1) - 1
-			oArray["z" SubStr(para_string1, A_Index, 2)]++
-		Loop, % vCount2 := StrLen(para_string2) - 1
-			if (oArray["z" SubStr(para_string2, A_Index, 2)] > 0) {
-				oArray["z" SubStr(para_string2, A_Index, 2)]--
+		Loop, % vCount1 := StrLen(param_string1) - 1
+			oArray["z" SubStr(param_string1, A_Index, 2)]++
+		Loop, % vCount2 := StrLen(param_string2) - 1
+			if (oArray["z" SubStr(param_string2, A_Index, 2)] > 0) {
+				oArray["z" SubStr(param_string2, A_Index, 2)]--
 				vCount++
 			}
 		vSDC := Round((2 * vCount) / (vCount1 + vCount2),2)
@@ -32,10 +32,10 @@ Class stringsimilarity {
 	}
 
 
-	findBestMatch(para_string,para_array) {
+	findBestMatch(param_string, param_array) {
 		savedBatchLines := A_BatchLines
 		SetBatchLines, -1
-		if (!IsObject(para_array)) {
+		if (!IsObject(param_array)) {
 			SetBatchLines, % savedBatchLines
 			return false
 		}
@@ -43,44 +43,45 @@ Class stringsimilarity {
 		this.info_Array := []
 
 		; Score each option and save into a new array
-		loop, % para_array.MaxIndex() {
-			this.info_Array[A_Index, "rating"] := this.compareTwoStrings(para_string, para_array[A_Index])
-			this.info_Array[A_Index, "target"] := para_array[A_Index]
+		loop, % param_array.MaxIndex() {
+			this.info_Array[A_Index, "rating"] := this.compareTwoStrings(param_string, param_array[A_Index])
+			this.info_Array[A_Index, "target"] := param_array[A_Index]
 		}
 
-		;sort the scored array and return the bestmatch
-		l_sortedArray := this.internal_Sort2DArrayFast(this.info_Array,"rating", false) ;false reverses the order so the highest scoring is at the top
-		l_object := {bestMatch:l_sortedArray[1], ratings:l_sortedArray}
+		;sort the rated array
+		l_sortedArray := this.internal_Sort2DArrayFast(this.info_Array,"rating")
+		; create the besMatch property and final object
+		l_object := {bestMatch:l_sortedArray[1].clone(), ratings:l_sortedArray}
 		SetBatchLines, % savedBatchLines
 		return l_object
 	}
 
 
-	simpleBestMatch(para_string,para_array) {
-		if (!IsObject(para_array)) {
+	simpleBestMatch(param_string, param_array) {
+		if (!IsObject(param_array)) {
 			return false
 		}
 
-		l_array := this.findBestMatch(para_string,para_array)
+		l_array := this.findBestMatch(param_string, param_array)
 		return l_array.bestMatch.target
 	}
 
 
 
-	internal_Sort2DArrayFast(byRef a, key, Ascending := True)
+	internal_Sort2DArrayFast(param_arr, param_key, Ascending := True)
 	{
-		for index, obj in a
-			out .= obj[key] "+" index "|" ; "+" allows for sort to work with just the value
+		for index, obj in param_arr
+			out .= obj[param_key] "+" index "|" ; "+" allows for sort to work with just the value
 		; out will look like:   value+index|value+index|
 
-		v := a[a.minIndex(), key]
+		v := param_arr[param_arr.minIndex(), param_key]
 		if v is number
 			type := " N "
-		StringTrimRight, out, out, 1 ; remove trailing |
-		Sort, out, % "D| " type  (!Ascending ? " R" : " ")
+		out := subStr(out, 1, strLen(out) -1) ; remove trailing |
+		Sort, out, % "D| " type  " R"
 		l_storage := []
 		loop, parse, out, |
-			l_storage.insert(a[SubStr(A_LoopField, InStr(A_LoopField, "+") + 1)])
+			l_storage.insert(param_arr[SubStr(A_LoopField, InStr(A_LoopField, "+") + 1)])
 		return l_storage
 	}
 }
