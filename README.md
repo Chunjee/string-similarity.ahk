@@ -32,9 +32,9 @@ Returns a fraction between 0 and 1, which indicates the degree of similarity bet
 ##### Arguments
 1. string1 (string): The first string
 2. string2 (string): The second string
-	
+
 Order does not make a difference.
-	
+
 ##### Returns
 (Number): A fraction from 0 to 1, both inclusive. Higher number indicates more similarity.
 
@@ -64,7 +64,7 @@ Compares `mainString` against each string in `targetStrings`.
 2. targetStrings (Array): Each string in this array will be matched against the main string.
 
 ##### Returns
-(Object): An object with a `ratings` property, which gives a similarity rating for each target string, and a `bestMatch` property, which specifies which target string was most similar to the main string.
+(Object): An object with a `ratings` property, which gives a similarity rating for each target string, and a `bestMatch` property, which specifies which target string was most similar to the main string. The array of `ratings` are sorted from higest rating to lowest.
 
 ##### Example
 ```autohotkey
@@ -74,15 +74,15 @@ stringSimilarity.findBestMatch("Olive-green table for sale, in extremely good co
 	, "Wanted: mountain bike with at least 21 gears."])
 ; =>
 { ratings:
-	 [ { target: "For sale: green Subaru Impreza, 210,000 miles",
-			 rating: 0.30 },
-		 { target: "For sale: table in very good condition, olive green in colour.",
-			 rating: 0.71 },
-		 { target: "Wanted: mountain bike with at least 21 gears.",
-			 rating: 0.11 } ],
+	[{ target: "For sale: table in very good condition, olive green in colour.",
+		rating: 0.71 },
+	{ target: "For sale: green Subaru Impreza, 210,000 miles",
+		rating: 0.30 },
+	{ target: "Wanted: mountain bike with at least 21 gears.",
+		rating: 0.11 }],
 	bestMatch:
-	 { target: "For sale: table in very good condition, olive green in colour.",
-		 rating: 0.71 } }
+	{ target: "For sale: table in very good condition, olive green in colour.",
+		rating: 0.71 } }
 ```
 
 
