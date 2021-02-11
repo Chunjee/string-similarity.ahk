@@ -43,13 +43,13 @@ Class stringsimilarity {
 		this.info_Array := []
 
 		; Score each option and save into a new array
-		loop, % param_array.MaxIndex() {
-			this.info_Array[A_Index, "rating"] := this.compareTwoStrings(param_string, param_array[A_Index])
-			this.info_Array[A_Index, "target"] := param_array[A_Index]
+		for key, value in param_array {
+			this.info_Array[A_Index, "rating"] := this.compareTwoStrings(param_string, value)
+			this.info_Array[A_Index, "target"] := value
 		}
 
 		;sort the rated array
-		l_sortedArray := this.internal_Sort2DArrayFast(this.info_Array,"rating")
+		l_sortedArray := this._internal_Sort2DArrayFast(this.info_Array,"rating")
 		; create the besMatch property and final object
 		l_object := {bestMatch:l_sortedArray[1].clone(), ratings:l_sortedArray}
 		SetBatchLines, % savedBatchLines
@@ -61,14 +61,21 @@ Class stringsimilarity {
 		if (!IsObject(param_array)) {
 			return false
 		}
+		l_highestRating := 0
 
-		l_array := this.findBestMatch(param_string, param_array)
-		return l_array.bestMatch.target
+		for key, value in param_array {
+			l_rating := this.compareTwoStrings(param_string, value)
+			if (l_highestRating < l_rating) {
+				l_highestRating := l_rating
+				l_bestMatchValue := value
+			}
+		}
+		return l_bestMatchValue
 	}
 
 
 
-	internal_Sort2DArrayFast(param_arr, param_key, Ascending := True)
+	_internal_Sort2DArrayFast(param_arr, param_key, Ascending := True)
 	{
 		for index, obj in param_arr
 			out .= obj[param_key] "+" index "|" ; "+" allows for sort to work with just the value
