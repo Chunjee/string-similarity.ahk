@@ -1,9 +1,6 @@
 Class stringsimilarity {
 
-	__New() {
-
-	}
-
+	; --- Static Methods ---
 
 	compareTwoStrings(param_string1, param_string2) {
 		;Sørensen-Dice coefficient
@@ -11,18 +8,23 @@ Class stringsimilarity {
 		setBatchLines, -1
 
 		vCount := 0
-		l_arr := {base:{__Get:Func("Abs").Bind(0)}} ;make default key value 0 instead of a blank string
-		loop, % vCount1 := StrLen(param_string1) - 1
+		;make default key value 0 instead of a blank string
+		l_arr := {base:{__Get:Func("Abs").Bind(0)}}
+		loop, % vCount1 := StrLen(param_string1) - 1 {
 			l_arr["z" SubStr(param_string1, A_Index, 2)]++
-		loop, % vCount2 := StrLen(param_string2) - 1
+		}
+		loop, % vCount2 := StrLen(param_string2) - 1 {
 			if (l_arr["z" SubStr(param_string2, A_Index, 2)] > 0) {
 				l_arr["z" SubStr(param_string2, A_Index, 2)]--
 				vCount++
 			}
+		}
 		vSDC := round((2 * vCount) / (vCount1 + vCount2), 2)
-		if (!vSDC || vSDC < 0.005) { ;round to 0 if less than 0.005
+		;round to 0 if less than 0.005
+		if (!vSDC || vSDC < 0.005) {
 			return 0
 		}
+		; return 1 if rounded to 1.00
 		if (vSDC = 1) {
 			return 1
 		}
@@ -77,7 +79,8 @@ Class stringsimilarity {
 	_internal_Sort2DArrayFast(param_arr, param_key, Ascending := True)
 	{
 		for index, obj in param_arr {
-			out .= obj[param_key] "+" index "|" ; "+" allows for sort to work with just the value
+			out .= obj[param_key] "+" index "|"
+			; "+" allows for sort to work with just the value
 			; out will look like:   value+index|value+index|
 		}
 
