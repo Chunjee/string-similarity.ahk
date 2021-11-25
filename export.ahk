@@ -1,4 +1,4 @@
-Class stringsimilarity {
+class stringsimilarity {
 
 	; --- Static Methods ---
 
@@ -9,13 +9,13 @@ Class stringsimilarity {
 
 		vCount := 0
 		;make default key value 0 instead of a blank string
-		l_arr := {base:{__Get:Func("Abs").Bind(0)}}
-		loop, % vCount1 := StrLen(param_string1) - 1 {
-			l_arr["z" SubStr(param_string1, A_Index, 2)]++
+		l_arr := {base:{__Get:func("abs").bind(0)}}
+		loop, % vCount1 := strLen(param_string1) - 1 {
+			l_arr["z" subStr(param_string1, A_Index, 2)]++
 		}
-		loop, % vCount2 := StrLen(param_string2) - 1 {
-			if (l_arr["z" SubStr(param_string2, A_Index, 2)] > 0) {
-				l_arr["z" SubStr(param_string2, A_Index, 2)]--
+		loop, % vCount2 := strLen(param_string2) - 1 {
+			if (l_arr["z" subStr(param_string2, A_Index, 2)] > 0) {
+				l_arr["z" subStr(param_string2, A_Index, 2)]--
 				vCount++
 			}
 		}
@@ -36,7 +36,7 @@ Class stringsimilarity {
 	findBestMatch(param_string, param_array) {
 		savedBatchLines := A_BatchLines
 		setBatchLines, -1
-		if (!IsObject(param_array)) {
+		if (!isObject(param_array)) {
 			setBatchLines, % savedBatchLines
 			return false
 		}
@@ -52,7 +52,7 @@ Class stringsimilarity {
 		;sort the rated array
 		l_sortedArray := this._internal_Sort2DArrayFast(l_arr, "rating")
 		; create the besMatch property and final object
-		l_object := {bestMatch:l_sortedArray[1].clone(), ratings:l_sortedArray}
+		l_object := {bestMatch: l_sortedArray[1].clone(), ratings: l_sortedArray}
 		setBatchLines, % savedBatchLines
 		return l_object
 	}
@@ -76,7 +76,7 @@ Class stringsimilarity {
 
 
 
-	_internal_Sort2DArrayFast(param_arr, param_key, Ascending := True)
+	_internal_Sort2DArrayFast(param_arr, param_key)
 	{
 		for index, obj in param_arr {
 			out .= obj[param_key] "+" index "|"
