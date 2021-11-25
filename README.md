@@ -10,7 +10,7 @@ In a terminal or command line navigated to your project folder:
 npm install string-similarity.ahk
 ```
 
-In your code:
+In your code only export.ahk needs to be included:
 ```autohotkey
 #Include %A_ScriptDir%\node_modules
 #Include string-similarity.ahk\export.ahk
